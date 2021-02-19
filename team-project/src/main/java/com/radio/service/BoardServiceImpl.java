@@ -44,7 +44,7 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	
-	//게시물 읽기
+	//게시물 읽기(조회수증가)
 	@Override
 	public BoardVO read(Long board_bno) {
 		mapper.increaseRead_cnt(board_bno);
@@ -80,6 +80,15 @@ public class BoardServiceImpl implements BoardService{
 		
 		return mapper.delete(board_bno) == 1;
 	}
+	
+	//오늘 요일정보 받아오기
+	@Override
+	public int getToday() {
+		
+		return mapper.getToday();
+	}
+	
+	
 	
 
 }

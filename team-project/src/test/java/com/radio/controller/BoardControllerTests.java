@@ -103,7 +103,7 @@ public class BoardControllerTests {
 	//게시물 삭제
 	@Test
 	public void testDelete() throws Exception{
-		String result = mockMvc.perform(MockMvcRequestBuilders.get("/board/delete")
+		String result = mockMvc.perform(MockMvcRequestBuilders.post("/board/delete")
 				.param("board_bno", "22"))
 				.andReturn().getModelAndView().getViewName();
 		

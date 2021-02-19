@@ -115,5 +115,11 @@ public class BoardServiceTests {
 	}
 	
 	*/
+	
+	//오늘 요일정보 받기
+	@Test
+	public void testGetToday() {
+		log.info(service.getToday());
+	}
 
 }

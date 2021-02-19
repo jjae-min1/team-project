@@ -107,6 +107,11 @@
  		
  	</select>
  	
+ 	<!-- Home화면 매일코너 소개글 요일처리 -->
+ 	<select id="getToday" resultType="int">
+ 		SELECT TO_CHAR(sysdate + 9/24, 'd') FROM dual
+ 	</select>
+ 	
  	
  	
  </mapper>

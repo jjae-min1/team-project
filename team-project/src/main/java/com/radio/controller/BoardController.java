@@ -1,17 +1,17 @@
 package com.radio.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.radio.domain.BoardVO;
 import com.radio.domain.Board_Criteria;
 import com.radio.domain.Board_PageDTO;
+import com.radio.security.domain.CustomUser;
 import com.radio.service.BoardService;
 
 import lombok.AllArgsConstructor;
@@ -29,9 +29,11 @@ public class BoardController {
 	//게시물 목록
 	@GetMapping("/list")
 	public void list(Board_Criteria board_Criteria, Model model) {
-		//model.addAttribute('Board_Criteria", board_Criteria);
+		//model.addAttribute('board_criteria", board_Criteria);
+		//model.addAttribute("board_criteria", cri);
 		
 		log.info("********list 실행*********");
+		
 		
 	
 		log.info(board_Criteria);
@@ -41,19 +43,22 @@ public class BoardController {
 		
 		model.addAttribute("list", service.getList(board_Criteria));
 		model.addAttribute("pageInfo", new Board_PageDTO(board_Criteria, service.getTotal(board_Criteria)));
-		
+		model.addAttribute("notiNum", 1);
 		
 		
 	}
 	
 	
 	//게시물 등록
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/register")
 	public void register(Board_Criteria board_Criteria) {
+		
 		log.info("**********register(get) 실행**********");
 		log.info(board_Criteria);
 		
 	}
+	
 	
 	@PostMapping("/register")
 	public String register(BoardVO boardVO, Board_Criteria board_Criteria, RedirectAttributes rttr) {
@@ -61,12 +66,15 @@ public class BoardController {
 		
 		log.info(boardVO);
 		service.register(boardVO);
-		
+		//페이지 정보
 		rttr.addAttribute("pageNum", board_Criteria.getPageNum());
 		rttr.addAttribute("amount", board_Criteria.getAmount());
 		rttr.addAttribute("type", board_Criteria.getType());
 		rttr.addAttribute("keyword", board_Criteria.getKeyword());
 		rttr.addAttribute("day", board_Criteria.getDay());
+		
+		//Modal Message
+		rttr.addAttribute("message", boardVO.getBoard_bno() + "번 글이 등록되었습니다.");
 		
 		
 		
@@ -92,7 +100,7 @@ public class BoardController {
 	
 	@GetMapping("/modify")
 	public void modify(Long board_bno,Board_Criteria board_Criteria, Model model){
-		log.info("********read or modify 실행************");
+		log.info("********(GET) modify 실행************");
 		
 		BoardVO boardVO = service.get(board_bno);
 		
@@ -112,12 +120,16 @@ public class BoardController {
 		if(service.modify(boardVO)) {
 			rttr.addFlashAttribute("result", "success");
 		}
+		
+		//페이지 정보
 		rttr.addAttribute("pageNum", board_Criteria.getPageNum());
 		rttr.addAttribute("amount", board_Criteria.getAmount());
 		rttr.addAttribute("type", board_Criteria.getType());
 		rttr.addAttribute("keyword", board_Criteria.getKeyword());
 		rttr.addAttribute("day", board_Criteria.getDay());
 		
+		//ModalMessage
+		rttr.addAttribute("message", boardVO.getBoard_bno() + "번 글이 수정되었습니다.");
 
 		return "redirect:/board/list";
 	}
@@ -134,12 +146,15 @@ public class BoardController {
 			rttr.addFlashAttribute("result", "success");
 		}
 		
+		//페이지 정보
 		rttr.addAttribute("pageNum", board_Criteria.getPageNum());
 		rttr.addAttribute("amount", board_Criteria.getAmount());
 		rttr.addAttribute("type", board_Criteria.getType());
 		rttr.addAttribute("keyword", board_Criteria.getKeyword());
 		rttr.addAttribute("day", board_Criteria.getDay());
 		
+		//Modal Message
+		rttr.addAttribute("message", board_bno + "번 글이 삭제되었습니다.");
 		
 		return "redirect:/board/list";
 	}
@@ -147,9 +162,7 @@ public class BoardController {
 	
 	//코너소개
 	@GetMapping("/board/dayintro")
-	public void dayintro(Board_Criteria cri) {
-		
-		
+	public void dayintro() {
 		
 	}
 	

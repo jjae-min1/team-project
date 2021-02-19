@@ -22,7 +22,7 @@ public class BoardMappterTests {
 	@Setter(onMethod_ = @Autowired)
 	private BoardMapper mapper;
 	
-	
+	/*
 	 //게시물 조회 테스트
 	@Test
 	public void testGetList() {
@@ -32,7 +32,7 @@ public class BoardMappterTests {
 		List<BoardVO> list = mapper.getList(cri);
 		mapper.getList(cri).forEach(board -> log.info(board));
 	}
-	
+	*/
 	
 	/* 
 	  //게시물 등록 테스트
@@ -84,6 +84,7 @@ public class BoardMappterTests {
 		boardVO.setBoard_bno(5L);
 		boardVO.setBoard_title("수정된 내용");
 		boardVO.setBoard_content("수정된 내용");
+		boardVO.setBoard_id("수정된 내용");
 		
 		
 		int i = mapper.modify(boardVO);
@@ -93,7 +94,7 @@ public class BoardMappterTests {
 		log.info("*********************************************");
 		
 	}
-	 */
+	*/
 	
 	
 	/*
@@ -130,5 +131,13 @@ public class BoardMappterTests {
 	
 	
 	*/
+	
+	//요일정보 얻기 테스트
+	@Test
+	public void testGetToday() {
+		log.info("*****************************************");
+		log.info(mapper.getToday());
+		log.info("*****************************************");
+	}
 	
 }

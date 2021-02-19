@@ -24,6 +24,7 @@
 		<property name="username" value="admin"></property>		
 		<property name="password" value="$Wlstndhkdkdlemf5$"></property>		
 		<property name="maximumPoolSize" value="1"></property> 
+		<!-- Developer 주소 : https://pi1flq5evychebv-db202102031421.adb.ap-seoul-1.oraclecloudapps.com/ords/admin/sign-in/?r=_sdw%2F%3Fnav%3Dworksheet -->
 	</bean>
 	
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
@@ -40,8 +41,18 @@
 	
 	<mybatis-spring:scan base-package="com.radio.mapper"/>
 	
+	<!-- oci에 받아 설정한 configfile 빈 -->
+	
+	<bean id="ociConfigPath" class="java.lang.String">
+	<constructor-arg value="/home/opc/oci/config"></constructor-arg>
+	</bean>
+	
+	
+	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	  <context:component-scan base-package="com.radio.service"></context:component-scan>
+	
+	
 	
 	<tx:annotation-driven />
 </beans>

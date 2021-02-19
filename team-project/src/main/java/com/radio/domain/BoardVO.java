@@ -6,6 +6,8 @@ import lombok.Data;
 
 @Data
 public class BoardVO {
+
+	
 	private Long board_bno;
 	private String board_title;
 	private String board_content;

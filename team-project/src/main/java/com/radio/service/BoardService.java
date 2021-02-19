@@ -28,4 +28,7 @@ public interface BoardService {
 	//게시물 총 개수
 	public int getTotal(Board_Criteria cri);
 	
+	//오늘날짜 받아오기
+	public int getToday();
+	
 }
