@@ -27,6 +27,26 @@
 		var todoForm = $('#todoForm');
 		
 		$('button[data-oper=register]').click(function(e){
+			if(!registerForm.find("[name='video_title']").val()){
+				alert("제목을 입력하세요");
+				return false;
+			}
+			
+			if(!registerForm.find("[name='thumbnail']").val()){
+				alert("썸네일을 선택하세요");
+				return false;
+			}
+			
+			if(!registerForm.find("[name='vod']").val()){
+				alert("영상을 선택하세요");
+				return false;
+			}
+			
+			if(!registerForm.find("[name='video_date']").val()){
+				alert("방송일을 선택하세요");
+				return false;
+			}
+			
 			registerForm.submit();
 		});
 		
@@ -75,8 +95,8 @@
 					placeholder="영상" id="input4" >
 		<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 		
-		<input type="hidden" name="video_thumbnail" value="1">
-		<input type="hidden" name="video_vod" value="2">
+		<input type="hidden" name="video_thumbnail" value="">
+		<input type="hidden" name="video_vod" value="">
 
 		<input type="submit" />
 	</form>

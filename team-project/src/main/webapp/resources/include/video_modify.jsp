@@ -24,6 +24,27 @@
 		var modifyForm = $('#modifyForm');
 		
 		$('button[data-oper=modify]').click(function(e){
+			if(!modifyForm.find("[name='video_title']").val()){
+				alert("제목을 입력하세요");
+				return false;
+			}
+			
+			if(!modifyForm.find("[name='thumbnail']").val()){
+				alert("썸네일을 선택하세요");
+				return false;
+			}
+			
+			if(!modifyForm.find("[name='vod']").val()){
+				alert("영상을 선택하세요");
+				return false;
+			}
+			
+			if(!modifyForm.find("[name='video_date']").val()){
+				alert("방송일을 선택하세요");
+				return false;
+			}
+			
+			
 			modifyForm.submit();
 		});
 		

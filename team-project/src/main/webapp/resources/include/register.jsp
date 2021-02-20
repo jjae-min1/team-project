@@ -26,7 +26,10 @@ var root = '${root}';
 		var registerForm = $("#registerForm");
 		
 		$("button[data-oper='register']").click(function(e){
-			
+			if(!registerForm.find("[name='board_title']").val()){
+				alert("제목을 입력하세요");
+				return false;
+			}
 			
 			registerForm.submit();
 		});

@@ -28,6 +28,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- 예외처리 scan -->
+	<!-- <context:component-scan base-package="com.radio.exception" /> -->
+	  
 	<context:component-scan base-package="com.radio.controller" />
 	<!-- 파일업로드시 file 타입 변환용 빈 -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>

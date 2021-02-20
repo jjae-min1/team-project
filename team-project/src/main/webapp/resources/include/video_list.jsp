@@ -29,6 +29,16 @@
 			todoForm.submit();
 		});
 		
+		$('button[data-oper=delete]').click(function(e){
+			todoForm.append("<input type='hidden' name='${_csrf.parameterName}' value='${_csrf.token}'>");
+							 
+			
+			todoForm.find('input[name=video_bno]').val($(this).attr('value'));
+			todoForm.attr("method", "post");
+			todoForm.attr("action", root+"/video/video_delete");
+			todoForm.submit();
+		});
+		
 		
 		$('button[data-oper=review]').click(function(e){
 			todoForm.find('input[name=video_bno]').val($(this).attr('value'));
@@ -167,7 +177,11 @@
 				<li class="list-group-item list-group-item-dark">
 					<img alt="" class="img-fluid" src="${staticPath }${videoVO.video_thumbnail}">
 					<button type="button" class="btn btn-secondary" 
-						data-oper="review" value="${videoVO.video_bno }" >다시보기</button>
+						data-oper="review" value="${videoVO.video_bno }">다시보기</button>
+					<sec:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_MANAGER')">		
+					<button type="button" class="btn btn-light" 
+						data-oper="delete" value="${videoVO.video_bno }" >삭제하기</button>
+					</sec:authorize>	
 				</li>
 			</c:forEach>
 		</ol>

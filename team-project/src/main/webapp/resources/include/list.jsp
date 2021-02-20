@@ -214,8 +214,84 @@ th {
 
 <div class="weekList">
   <div class="listHeader">
-  	<strong class="h5message">제목지어주기</strong>
-  </div>
+        	<c:choose>
+        		<c:when test="${today eq 2}">
+            		<strong class="title1">[월요일] 영업합니다</strong> 
+            		<div class="description">
+						<p>
+							"당신이 미처 몰랐던 숨겨진 노래들, 영업해드립니다"
+							<br/>
+							"데이브레이크 문진수님과 함께하는, 본격 곡 영업소"
+						</p>					
+					</div>
+            	</c:when>
+
+        		<c:when test="${today eq 3}">
+            		<strong class="title1">[화요일] 뮤직에세이, 노래 속 책갈피</strong> 
+            		<div class="description">
+						<p>
+							"당신에게 음악이란 무엇입니까?"
+							<br/>
+							"음악에 대한 여러분의 생각과 또 그렇게 생각하게 된 사연을 자유롭게 올려주세요~"
+						</p>					
+					</div>
+            	</c:when>
+
+        		<c:when test="${today eq 4}">
+            		<strong class="title1">[수요일] 뮤직에세이, 노래 속 책갈피</strong> 
+            		<div class="description">
+						<p>
+							"당신에게 음악이란 무엇입니까?"
+							<br/>
+							"음악에 대한 여러분의 생각과 또 그렇게 생각하게 된 사연을 자유롭게 올려주세요~"
+						</p>					
+					</div>
+            	</c:when>
+
+        		<c:when test="${today eq 5}">
+            		<strong class="title1">[목요일] 극한일상</strong> 
+            		<div class="description">
+						<p>
+							"극으로 치닿는 고민부터 극까이거 싶은 고민까지!"
+							<br/>
+							"극정없는 DJ 문진수님과 극렬하게 여러분의 일상의 짐을 나눠드릴게요"
+						</p>					
+					</div>
+            	</c:when>
+
+        		<c:when test="${today eq 6}">
+            		<strong class="title1">[금요일] 전지적 작사 시점</strong> 
+            		<div class="description">
+						<p>
+							"그냥 듣던 노래도, 전지적 작사 시점으로 들으면 다르다?"
+							<br/>
+							"평소에 마음을 흔들거나, 힘을 주는 가사말 들을 알려주세요"
+						</p>					
+					</div>
+            	</c:when>
+
+        		<c:when test="${today eq 7}">
+            		<strong class="title1">[토요일] SoSo썰_의뢰 사연</strong> 
+            		<div class="description">
+						<p>
+							"살다보면 찾아오는 선택의 순간! 혹시 그 선택의 순간에서 길을 잃으셨나요?"
+							<br/>
+							"그럴때  &ltSoSo썰&gt에 찾아와 사연을 올려주세요~"
+						</p>					
+					</div>
+            	</c:when>
+
+				<c:otherwise>
+					<strong class="title1">[일요일] 북 트래블러</strong> 
+            		<div class="description">
+						<p>
+							"어디든 보내드립니다."
+							<br/>
+							"책 속에서 떠나는 일요일 밤의 배낭여행"
+						</p>					
+					</div>
+				</c:otherwise>            	
+            </c:choose>
   
   <div class="">
     <table class="list-table"> 

@@ -25,7 +25,10 @@
 		var modifyForm = $("#modifyForm");
 		
 		$("button[data-oper='modify']").click(function(e){
-			
+			if(!modifyForm.find("[name='board_title']").val()){
+				alert("제목을 입력하세요");
+				return false;
+			}
 			
 			modifyForm.submit();
 		});
