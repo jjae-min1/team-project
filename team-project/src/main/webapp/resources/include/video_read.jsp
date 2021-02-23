@@ -59,10 +59,20 @@
 }
 
 </style>
+
+<style type="text/css">
+.video-read {
+	margin: 3%;
+	padding: 3%;
+}
+</style>
+
 </head>
 <body>
 
-<h1>videoRead</h1>
+
+<div class="video-read">
+<h2>보이는 라디오</h2>
 
 
 	<div class="row justify-content-center">
@@ -112,6 +122,7 @@
 	
 	
 
+</div>
 </div>
 	
 	

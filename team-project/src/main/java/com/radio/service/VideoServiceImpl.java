@@ -1,6 +1,6 @@
 package com.radio.service;
 
-import java.io.BufferedInputStream;	
+import java.io.BufferedInputStream;		
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -9,6 +9,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.oracle.bmc.ConfigFileReader;
@@ -46,6 +47,7 @@ public class VideoServiceImpl implements VideoService{
 	private String ociConfigPath;
 	
 	
+	
 	//게시물 목록
 	@Override
 	public List<VideoVO> getList(Video_Criteria cri) {
@@ -62,6 +64,7 @@ public class VideoServiceImpl implements VideoService{
 
 	//게시물 읽기
 	@Override
+	@Transactional
 	public VideoVO read(Long video_bno) {
 		mapper.increaseView_cnt(video_bno);
 		return mapper.read(video_bno);

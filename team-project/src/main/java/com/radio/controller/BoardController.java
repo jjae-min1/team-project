@@ -75,7 +75,7 @@ public class BoardController {
 		rttr.addAttribute("day", board_Criteria.getDay());
 		
 		//Modal Message
-		rttr.addAttribute("message", boardVO.getBoard_bno() + "번 글이 등록되었습니다.");
+		rttr.addFlashAttribute("message", boardVO.getBoard_bno() + "번 글이 등록되었습니다.");
 		
 		
 		
@@ -119,7 +119,7 @@ public class BoardController {
 		log.info("********modify(post) 실행************");
 		
 		if(service.modify(boardVO)) {
-			rttr.addFlashAttribute("result", "success");
+			rttr.addFlashAttribute("message", boardVO.getBoard_bno() + "번 글이 수정되었습니다.");
 		}
 		
 		//페이지 정보
@@ -129,8 +129,7 @@ public class BoardController {
 		rttr.addAttribute("keyword", board_Criteria.getKeyword());
 		rttr.addAttribute("day", board_Criteria.getDay());
 		
-		//ModalMessage
-		rttr.addAttribute("message", boardVO.getBoard_bno() + "번 글이 수정되었습니다.");
+		
 
 		return "redirect:/board/list";
 	}
@@ -144,7 +143,7 @@ public class BoardController {
 		log.info("************delete 실행*************");
 		
 		if(service.delete(board_bno)) {
-			rttr.addFlashAttribute("result", "success");
+			rttr.addFlashAttribute("message", board_bno + "번 글이 삭제되었습니다.");
 		}
 		
 		//페이지 정보
@@ -154,8 +153,7 @@ public class BoardController {
 		rttr.addAttribute("keyword", board_Criteria.getKeyword());
 		rttr.addAttribute("day", board_Criteria.getDay());
 		
-		//Modal Message
-		rttr.addAttribute("message", board_bno + "번 글이 삭제되었습니다.");
+		
 		
 		return "redirect:/board/list";
 	}

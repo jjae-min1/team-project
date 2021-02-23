@@ -19,6 +19,29 @@ var root = '${root}';
 <script
   src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script>
+	$(document).ready(function() {
+		
+		
+	var message = '${message}';
+	
+		
+		//checkModal(result);
+		checkModal2(message);
+		
+		history.replaceState({}, null, null);
+		
+		function checkModal2(message) {
+			if (message && history.state == null) {
+				
+				$("#myModal").modal("show");
+			}
+		}
+		
+		
+	
+	});
+</script>
 
 
 <script type="text/javascript">
@@ -29,7 +52,7 @@ var root = '${root}';
 		
 		
 		var actionForm = $("#actionForm");
-		var message = '${message}';
+		
 		
 		
 		
@@ -292,6 +315,7 @@ th {
 					</div>
 				</c:otherwise>            	
             </c:choose>
+            </div>
   
   <div class="">
     <table class="list-table"> 
@@ -363,6 +387,8 @@ th {
 	</table>
   </div>
   
+  
+  
   <div id="write-button">
   		<button data-oper="register" type="button" class="btn btn-secondary">글쓰기</button>
   		<sec:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_MANAGER')">
@@ -370,27 +396,6 @@ th {
   		</sec:authorize>
   </div>
   
-<!--    
-<div id="myModal" class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">알림</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>처리가 완료되었습니다.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-			
-  -->
 
  
  

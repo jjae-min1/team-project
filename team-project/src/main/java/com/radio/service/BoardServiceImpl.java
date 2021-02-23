@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.radio.domain.BoardVO;
 import com.radio.domain.Board_Criteria;
@@ -46,6 +47,7 @@ public class BoardServiceImpl implements BoardService{
 	
 	//게시물 읽기(조회수증가)
 	@Override
+	@Transactional
 	public BoardVO read(Long board_bno) {
 		mapper.increaseRead_cnt(board_bno);
 		BoardVO boardVO = mapper.read(board_bno);

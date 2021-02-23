@@ -19,6 +19,8 @@
 <script
   src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script type="text/javascript" src="${root }/resources/js/board_reply.js"></script>
+
 
 <script type="text/javascript">
 	$(document).ready(function(e){
@@ -126,13 +128,36 @@
   					<button data-oper="list" type="button" class="btn btn-secondary">목록으로</button>
 				</div>	
 			</c:otherwise>
-		</c:choose>
-		
-		
-		
-		
-		
+		</c:choose>		
 </div>
+
+<!-- 댓글목록 -->
+<div class="container-sm my-3">
+		<div class="row" style="margin-left: 5px;">
+			<div class="col-12">
+				<div class="card">
+				
+					<div class="card-header d-flex justify-content-between align-items-center">
+						<span>댓글 목록</span>
+						<sec:authorize access="isAuthenticated()">
+						<button class="btn btn-info" id="new-reply-btn">댓글 쓰기</button>
+						</sec:authorize>
+					</div>
+					
+					<div class="card-body">
+						<ul class="list-unstyled" id="reply-ul">
+							
+						</ul>
+						
+					</div>
+				</div>
+			
+			</div>
+		</div>
+	</div>
+
+
+
 
 <div class="d-none">
 	<form id="operForm" action="/board/list" method="get">
@@ -146,7 +171,6 @@
 	</form>
 
 </div>
-
 
 
 
